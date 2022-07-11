@@ -1,27 +1,24 @@
 import React from "react";
 import { footerList1, footerList2, footerList3 } from "../../utils/constants";
+import * as Styled from "./Footer.styled";
 
 const List = ({ items, mt }: { items: string[]; mt: boolean }) => {
   return (
-    <div className={`flex flex-wrap gap-2 ${mt && "mt-5"}`}>
+    <Styled.FooterList $mt={mt}>
       {items.map((item) => (
-        <p
-          key={item}
-          className="text-sm text-gray-400 cursor-pointer hover:underline">
-          {item}
-        </p>
+        <Styled.FooterItem key={item}>{item}</Styled.FooterItem>
       ))}
-    </div>
+    </Styled.FooterList>
   );
 };
 
 export const Footer = () => {
   return (
-    <div className="hidden mt-6 xl:block">
+    <Styled.FooterContainer>
       <List items={footerList1} mt={false} />
       <List items={footerList2} mt />
       <List items={footerList3} mt />
-      <p className="mt-5 text-sm text-gray-400">2022 TokTik</p>
-    </div>
+      <Styled.FooterCopyright>2022 TokTik</Styled.FooterCopyright>
+    </Styled.FooterContainer>
   );
 };

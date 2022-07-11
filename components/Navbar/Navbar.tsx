@@ -7,20 +7,21 @@ import { AiOutlineLogout } from "react-icons/ai";
 import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 import Logo from "../../utils/toktik.png";
+import * as Styled from "./Navbar.styled";
 
 export const Navbar = () => {
   return (
-    <div className="flex items-center justify-between w-full px-4 py-2 border-b-2 border-gray-200">
+    <Styled.NavbarContainer>
       <Link href="/">
-        <div className="w-[100px] md:w-[130px]">
+        <Styled.ImageContainer>
           <Image
             className="cursor-pointer"
             src={Logo}
             alt="TokTik"
             layout="responsive"
           />
-        </div>
+        </Styled.ImageContainer>
       </Link>
-    </div>
+    </Styled.NavbarContainer>
   );
 };
