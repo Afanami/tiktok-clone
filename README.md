@@ -8,6 +8,7 @@ A simple Tiktok web clone
 - TypeScript
 - Sanity
 - tailwindcss
+- Styled components
 
 ## Project Vision
 
@@ -15,4 +16,4 @@ After trying a few different technologies during my last project [treban](https:
 
 ## Project Progress
 
-Setup Next.js template and updated README file with project information.
+Setup Next.js template and updated README file with project information. Created some base components and added tailwind styled components for component styling.
