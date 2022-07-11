@@ -13,13 +13,13 @@ interface IProps {
 
 export const VideoCard: NextPage<IProps> = ({ post }) => {
   const [isHover, setIsHover] = useState(false);
-  const [playing, setPlaying] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const [isVideoMuted, setIsVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
   const onVideoPress = () => {
-    setPlaying((prev) => !prev);
-    playing ? videoRef?.current?.pause() : videoRef?.current?.play();
+    setIsPlaying((prev) => !prev);
+    isPlaying ? videoRef?.current?.pause() : videoRef?.current?.play();
   };
 
   return (
@@ -69,19 +69,15 @@ export const VideoCard: NextPage<IProps> = ({ post }) => {
           </Link>
           {isHover && (
             <div className="absolute flex gap-10 cursor-pointer bottom-6 left-8 md:left-11 lg:left-8 lg:justify-between w-[100px] md:w-[50px] p-3">
-              <button onClick={onVideoPress}>
-                {playing ? (
-                  <BsFillPauseFill className="text-2xl text-black lg:text-4xl" />
-                ) : (
-                  <BsFillPlayFill className="text-2xl text-black lg:text-4xl" />
-                )}
+              <button
+                className="text-2xl text-black lg:text-4xl"
+                onClick={onVideoPress}>
+                {isPlaying ? <BsFillPauseFill /> : <BsFillPlayFill />}
               </button>
-              <button onClick={() => setIsVideoMuted((prev) => !prev)}>
-                {isVideoMuted ? (
-                  <HiVolumeOff className="text-2xl text-black lg:text-4xl" />
-                ) : (
-                  <HiVolumeUp className="text-2xl text-black lg:text-4xl" />
-                )}
+              <button
+                className="text-2xl text-black lg:text-4xl"
+                onClick={() => setIsVideoMuted((prev) => !prev)}>
+                {isVideoMuted ? <HiVolumeOff /> : <HiVolumeUp />}
               </button>
             </div>
           )}
