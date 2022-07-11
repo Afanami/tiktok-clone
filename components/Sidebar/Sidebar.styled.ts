@@ -80,6 +80,7 @@ export const LoginButton = tw.button`
   outline-none 
   w-full 
   mt-3 
+  cursor-pointer
   hover:text-white 
   hover:bg-main
 `;
