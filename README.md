@@ -7,6 +7,7 @@ A simple Tiktok web clone
 - Next.js
 - TypeScript
 - Sanity
+- tailwindcss
 
 ## Project Vision
 
