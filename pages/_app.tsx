@@ -1,6 +1,7 @@
 import "../styles/globals.css";
 import type { AppProps } from "next/app";
 import { useState, useEffect } from "react";
+import { GoogleOAuthProvider } from "@react-oauth/google";
 import { Navbar } from "../components/Navbar/Navbar";
 import { Sidebar } from "../components/Sidebar/Sidebar";
 import * as Styled from "./_app.styled";
@@ -16,7 +17,8 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
   if (isSSR) return null;
 
   return (
-    <div>
+    <GoogleOAuthProvider
+      clientId={`${process.env.NEXT_PUBLIC_GOOGLE_API_TOKEN}`}>
       <Navbar />
       <Styled.Container>
         <Styled.SidebarContainer>
@@ -26,7 +28,7 @@ const MyApp = ({ Component, pageProps }: AppProps) => {
           <Component {...pageProps} />
         </Styled.ComponentContainer>
       </Styled.Container>
-    </div>
+    </GoogleOAuthProvider>
   );
 };
 
