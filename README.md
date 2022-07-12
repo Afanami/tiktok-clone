@@ -22,4 +22,4 @@ After trying a few different technologies during my last project [treban](https:
 
 ## Project Progress
 
-Setup Next.js template and updated README file with project information. Created some base components and added tailwind styled components for component styling. Refactoring current tailwind styles into styled components. Created video component and got videos rendering and pausing/playing. Need to tidy up styles into styled components for video component later.
+Setup Next.js template and updated README file with project information. Created some base components and added tailwind styled components for component styling. Refactoring current tailwind styles into styled components. Created video component and got videos rendering and pausing/playing. Need to tidy up styles into styled components for video component later. Working on uploading video page.

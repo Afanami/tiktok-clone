@@ -33,9 +33,25 @@ const Upload = () => {
                       <div className="flex flex-col items-center justify-center">
                         <p className="text-xl font-bold">
                           <FaCloudUploadAlt className="text-6xl text-gray-300" />
+                          <p className="text-xl font-semibold">Upload Video</p>
                         </p>
                       </div>
+                      <p className="mt-10 text-sm leading-10 text-center text-gray-400">
+                        MP4 or WebM or ogg <br />
+                        720x1280 or higher <br />
+                        Up to 10minutes <br />
+                        Less than 2GB
+                      </p>
+                      <p className="p-2 mt-10 font-medium text-center text-white rounded outline-none bg-main text-md w-52">
+                        Select File
+                      </p>
                     </div>
+                    <input
+                      type="file"
+                      name="upload-video"
+                      className="w-0 h-0"
+                      onChange={uploadVideo}
+                    />
                   </label>
                 )}
               </div>
