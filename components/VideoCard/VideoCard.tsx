@@ -13,14 +13,20 @@ interface IProps {
 
 export const VideoCard: NextPage<IProps> = ({ post }) => {
   const [isHover, setIsHover] = useState(false);
-  // const [isPlaying, setIsPlaying] = useState(false);
-  // const [isVideoMuted, setIsVideoMuted] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
+  const [isVideoMuted, setIsVideoMuted] = useState(false);
   const videoRef = useRef<HTMLVideoElement>(null);
 
-  // const onVideoPress = () => {
-  //   setIsPlaying((prev) => !prev);
-  //   isPlaying ? videoRef?.current?.pause() : videoRef?.current?.play();
-  // };
+  const onVideoClick = () => {
+    setIsPlaying((prev) => !prev);
+    isPlaying ? videoRef?.current?.pause() : videoRef?.current?.play();
+  };
+
+  useEffect(() => {
+    if (videoRef?.current) {
+      videoRef.current.muted = isVideoMuted;
+    }
+  }, [isVideoMuted]);
 
   return (
     <div className="flex flex-col pb-6 border-b-2 border-gray-200">
@@ -65,14 +71,13 @@ export const VideoCard: NextPage<IProps> = ({ post }) => {
               ref={videoRef}
               className="bg-gray-100 h-[300px] w-[200px] rounded-2xl cursor-pointer md:h-[400px] lg:h-[530px] lg:w-[700px]"
               src={post.video.asset.url}
-              loop
-              controls={isHover ? true : false}></video>
+              loop></video>
           </Link>
-          {/* {isHover && (
+          {isHover && (
             <div className="absolute flex gap-10 cursor-pointer bottom-6 left-8 md:left-11 lg:left-8 lg:justify-between w-[100px] md:w-[50px] p-3">
               <button
                 className="text-2xl text-black lg:text-4xl"
-                onClick={onVideoPress}>
+                onClick={onVideoClick}>
                 {isPlaying ? <BsFillPauseFill /> : <BsFillPlayFill />}
               </button>
               <button
@@ -81,7 +86,7 @@ export const VideoCard: NextPage<IProps> = ({ post }) => {
                 {isVideoMuted ? <HiVolumeOff /> : <HiVolumeUp />}
               </button>
             </div>
-          )} */}
+          )}
         </div>
       </div>
     </div>

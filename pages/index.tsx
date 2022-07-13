@@ -1,15 +1,14 @@
-import type { NextPage } from "next";
 import { IVideo } from "../types";
 import axios from "axios";
 import { VideoCard } from "../components/VideoCard/VideoCard";
 import { NoResults } from "../components/NoResults/NoResults";
-import { BASE_PATH } from "../utils/constants";
+import { BASE_URL } from "../utils";
 
 interface IProps {
   videos: IVideo[];
 }
 
-const Home: NextPage<IProps> = ({ videos }) => {
+const Home = ({ videos }: IProps) => {
   console.log(videos);
   return (
     <div className="flex flex-col h-full gap-10 videos">
@@ -18,14 +17,14 @@ const Home: NextPage<IProps> = ({ videos }) => {
           <VideoCard post={video} key={video._id} />
         ))
       ) : (
-        <NoResults text={"No Videos"} />
+        <NoResults text="No Videos" type="videos" />
       )}
     </div>
   );
 };
 
 export const getServerSideProps = async () => {
-  const { data } = await axios.get(`${BASE_PATH}/api/post`);
+  const { data } = await axios.get(`${BASE_URL}/api/post`);
 
   return {
     props: {

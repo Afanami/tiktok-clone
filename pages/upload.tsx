@@ -6,8 +6,9 @@ import axios from "axios";
 import { SanityAssetDocument } from "@sanity/client";
 import useAuthStore from "../store/authStore";
 import { client } from "../utils/client";
-import { BASE_PATH, topics } from "../utils/constants";
+import { topics } from "../utils/constants";
 import { IUser } from "../types";
+import { BASE_URL } from "../utils";
 
 const Upload = () => {
   const [isLoading, setIsLoading] = useState(false);
@@ -67,14 +68,14 @@ const Upload = () => {
         topic: category,
       };
 
-      await axios.post(`${BASE_PATH}/api/post`, document);
+      await axios.post(`${BASE_URL}/api/post`, document);
 
       router.push("/");
     }
   };
 
   return (
-    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 py-10 lg:py-20 justify-center bg-lightGray">
+    <div className="flex w-full h-full absolute left-0 top-[60px] mb-10 py-10 lg:py-20 justify-center bg-lightgray">
       <div className="bg-white rounded-lg xl:h-[80vh] flex gap-x-20 gap-y-6 flex-wrap justify-between items-center p-14 pt-6">
         <div>
           <div>
