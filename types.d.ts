@@ -35,3 +35,9 @@ export interface IUser {
   userName: string;
   image: string;
 }
+
+export interface IDecoded {
+  name: string;
+  picture: string;
+  sub: string;
+}

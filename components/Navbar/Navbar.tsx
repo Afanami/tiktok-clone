@@ -10,9 +10,15 @@ import { BiSearch } from "react-icons/bi";
 import { IoMdAdd } from "react-icons/io";
 import Logo from "../../utils/toktik.png";
 import * as Styled from "./Navbar.styled";
+import { IUser } from "../../types";
 
 export const Navbar = () => {
-  const { userProfile, addUser, removeUser } = useAuthStore();
+  const {
+    userProfile,
+    addUser,
+    removeUser,
+  }: { userProfile: IUser | any; addUser: any; removeUser: any } =
+    useAuthStore();
 
   return (
     <Styled.NavbarContainer>
@@ -33,10 +39,10 @@ export const Navbar = () => {
         {userProfile ? (
           <div className="flex gap-5 md:gap-10">
             <Link href="/upload">
-              <button className="flex items-center gap-2 px-2 font-semibold border-2 md:px-4 text-md">
+              <button className="flex items-center gap-2 px-2 font-semibold border-2 md:px-4 text-md hover:bg-hover">
                 <IoMdAdd className="text-xl" />
                 {` `}
-                <span className="hidden md:block">Upload</span>
+                <span className="hidden md:block ">Upload</span>
               </button>
             </Link>
             {userProfile.image && (
@@ -54,7 +60,7 @@ export const Navbar = () => {
             )}
             <button
               type="button"
-              className="px-2"
+              className="px-2 rounded-full hover:bg-hover"
               onClick={() => {
                 googleLogout();
                 removeUser();

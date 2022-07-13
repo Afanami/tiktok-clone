@@ -52,35 +52,35 @@ export const LinkText = tw.p`
   xl:block
 `;
 
-export const LoginContainer = tw.div`
-  hidden 
-  px-2 
-  py-4 
-  xl:block
-`;
+// export const LoginContainer = tw.div`
+//   hidden
+//   px-2
+//   py-4
+//   xl:block
+// `;
 
-export const LoginText = tw.p`
-  text-gray-400
-`;
+// export const LoginText = tw.p`
+//   text-gray-400
+// `;
 
-export const LoginButtonContainer = tw.div`
-  pr-4
-`;
+// export const LoginButtonContainer = tw.div`
+//   pr-4
+// `;
 
-export const LoginButton = tw.button` 
-  bg-white 
-  text-lg 
-  text-main 
-  border-[1px] 
-  border-main 
-  font-semibold 
-  px-6 
-  py-3 
-  rounded-md 
-  outline-none 
-  w-full 
-  mt-3 
-  cursor-pointer
-  hover:text-white 
-  hover:bg-main
-`;
+// export const LoginButton = tw.button`
+//   bg-white
+//   text-lg
+//   text-main
+//   border-[1px]
+//   border-main
+//   font-semibold
+//   px-6
+//   py-3
+//   rounded-md
+//   outline-none
+//   w-full
+//   mt-3
+//   cursor-pointer
+//   hover:text-white
+//   hover:bg-main
+// `;

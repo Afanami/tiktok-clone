@@ -25,11 +25,14 @@ module.exports = {
       },
       backgroundColor: {
         primary: "#F1F1F2",
+        main: "#8C1627",
         blur: "#030303",
+        lightGray: "#F8F8F8",
+        hover: "#F3F4F6",
       },
       colors: {
         primary: "rgb(22, 24, 35)",
-        main: "#8c1627",
+        main: "#8C1627",
       },
       height: {
         "88vh": "88vh",

@@ -31,28 +31,7 @@ export const Sidebar = () => {
               </Styled.LinkContentContainer>
             </Link>
           </Styled.LinkContainer>
-          {!userProfile && (
-            <Styled.LoginContainer>
-              <Styled.LoginText>
-                Log in to like and comment on videos
-              </Styled.LoginText>
-              <Styled.LoginButtonContainer>
-                {/* <GoogleLogin
-                  clientId=""
-                  render={(renderProps) => (
-                    <Styled.LoginButton
-                      onClick={renderProps.onClick}
-                      disabled={renderProps.disabled}>
-                      Log in
-                    </Styled.LoginButton>
-                  )}
-                  onSuccess={() => {}}
-                  onFailure={() => {}}
-                  cookiePolicy="single_host_origin"
-                /> */}
-              </Styled.LoginButtonContainer>
-            </Styled.LoginContainer>
-          )}
+
           <Discover />
           <SuggestedAccounts />
           <Footer />
