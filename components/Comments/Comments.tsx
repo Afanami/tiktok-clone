@@ -7,6 +7,8 @@ import useAuthStore from "../../store/authStore";
 import { NoResults } from "../NoResults/NoResults";
 import { IComment, IUser } from "../../types";
 import { UserDetails } from "../UserDetails/UserDetails";
+import { GoogleLogin } from "@react-oauth/google";
+import { createOrGetUser } from "../../utils";
 
 interface IProps {
   isPostingComment: Boolean;
@@ -26,7 +28,12 @@ export const Comments = ({
   const {
     userProfile,
     allUsers,
-  }: { userProfile: IUser | null; allUsers: IUser[] | [] } = useAuthStore();
+    addUser,
+  }: {
+    userProfile: IUser | null;
+    allUsers: IUser[] | [];
+    addUser: (user: IUser) => any;
+  } = useAuthStore();
 
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-lightgray border-b-2 lg:pb-0 pb-[100px]">
@@ -60,7 +67,7 @@ export const Comments = ({
         )}
       </div>
 
-      {userProfile && (
+      {userProfile ? (
         <div className="absolute bottom-0 left-0 px-2 pb-6 md:px-10">
           <form className="flex gap-4" onSubmit={addComment}>
             <input
@@ -73,6 +80,13 @@ export const Comments = ({
               {isPostingComment ? "Commenting..." : "Comment"}
             </button>
           </form>
+        </div>
+      ) : (
+        <div className="flex flex-col items-center justify-center gap-4 mb-10">
+          <NoResults text="Sign in to comment" type="" />
+          <GoogleLogin
+            onSuccess={(response) => createOrGetUser(response, addUser)}
+            onError={() => console.log(`Error`)}></GoogleLogin>
         </div>
       )}
     </div>
