@@ -1,7 +1,7 @@
-import React from "react";
+import React, { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { useRouter } from "next/router";
+import Router, { useRouter } from "next/router";
 import { GoogleLogin, googleLogout } from "@react-oauth/google";
 import { createOrGetUser } from "../../utils";
 import useAuthStore from "../../store/authStore";
@@ -13,12 +13,23 @@ import * as Styled from "./Navbar.styled";
 import { IUser } from "../../types";
 
 export const Navbar = () => {
+  const [searchValue, setSearchValue] = useState("");
+  const router = useRouter();
   const {
     userProfile,
     addUser,
     removeUser,
   }: { userProfile: IUser | any; addUser: any; removeUser: any } =
     useAuthStore();
+
+  const handleSearch = (e: { preventDefault: () => void }) => {
+    // prevent page reload
+    e.preventDefault();
+
+    if (searchValue) {
+      router.push(`/search/${searchValue}`);
+    }
+  };
 
   return (
     <Styled.NavbarContainer>
@@ -33,7 +44,24 @@ export const Navbar = () => {
         </Styled.ImageContainer>
       </Link>
 
-      <div>SEARCH</div>
+      <div className="relative hidden md:block">
+        <form
+          onSubmit={handleSearch}
+          className="absolute bg-white md:static top-10 left-20">
+          <input
+            type="text"
+            value={searchValue}
+            className="py-3 px-6 font-medium border-2 border-gray-100 bg-primary md:text-md focus:outline-none focus:border-2 focus:border-gray-300 w-[300px] md:w-[350px] rounded-full md:top-0"
+            onChange={(e) => setSearchValue(e.target.value)}
+            placeholder="Search accounts and videos"
+          />
+          <button
+            className="absolute pl-4 text-2xl text-gray-400 border-l-2 border-gray-300 md:right-5 right-6 top-4"
+            onClick={handleSearch}>
+            <BiSearch />
+          </button>
+        </form>
+      </div>
 
       <div>
         {userProfile ? (

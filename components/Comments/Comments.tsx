@@ -6,6 +6,7 @@ import { GoVerified } from "react-icons/go";
 import useAuthStore from "../../store/authStore";
 import { NoResults } from "../NoResults/NoResults";
 import { IComment, IUser } from "../../types";
+import { UserDetails } from "../UserDetails/UserDetails";
 
 interface IProps {
   isPostingComment: Boolean;
@@ -22,13 +23,35 @@ export const Comments = ({
   comments,
   isPostingComment,
 }: IProps) => {
-  const { userProfile }: { userProfile: IUser | any } = useAuthStore();
+  const {
+    userProfile,
+    allUsers,
+  }: { userProfile: IUser | null; allUsers: IUser[] | [] } = useAuthStore();
 
   return (
     <div className="border-t-2 border-gray-200 pt-4 px-10 bg-lightgray border-b-2 lg:pb-0 pb-[100px]">
       <div className="overflow-scroll lg:h-[475px]">
         {comments?.length ? (
-          <div>videos</div>
+          comments.map((commentObj, idx) => (
+            <>
+              {allUsers?.map(
+                (user: IUser) =>
+                  user._id ===
+                    (commentObj.postedBy._id || commentObj.postedBy._ref) && (
+                    <div className="items-center p-2" key={idx}>
+                      <Link href={`/profile/${user._id}`}>
+                        <div className="flex items-start gap-3 cursor-pointer">
+                          <UserDetails user={user} styles={{}} />
+                        </div>
+                      </Link>
+                      <div>
+                        <p>{commentObj.comment}</p>
+                      </div>
+                    </div>
+                  )
+              )}
+            </>
+          ))
         ) : (
           <NoResults text="Be the first to comment!" type="comments" />
         )}

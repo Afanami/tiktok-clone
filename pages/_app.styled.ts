@@ -8,7 +8,7 @@ export const Container = tw.div`
 
 export const SidebarContainer = tw.div`
   h-[92vh] 
-  overflow-hidden 
+  overflow-auto 
   xl:hover:overflow-auto
 `;
 

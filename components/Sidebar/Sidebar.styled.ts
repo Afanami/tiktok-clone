@@ -1,12 +1,15 @@
 import tw from "tailwind-styled-components";
 
-export const ToggleButton = tw.button`
+interface IButton {
+  $showSidebar: boolean;
+}
+
+export const ToggleButton = tw.button<IButton>`
   block 
-  m-2 
   mt-3 
-  ml-4 
+  ml-2 
   text-xl 
-  xl:hidden
+  ${(props: IButton) => (props.$showSidebar ? "" : "xl:hidden")}
 `;
 
 export const SidebarContainer = tw.div`
@@ -44,6 +47,7 @@ export const LinkContentContainer = tw.div`
 
 export const LinkIconContainer = tw.span`
   text-2xl
+  pr-1
 `;
 
 export const LinkText = tw.p`

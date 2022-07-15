@@ -22,4 +22,8 @@ After trying a few different technologies during my last project [treban](https:
 
 ## Project Progress
 
-Setup Next.js template and updated README file with project information. Created some base components and added tailwind styled components for component styling. Refactoring current tailwind styles into styled components. Created video component and got videos rendering and pausing/playing. Need to tidy up styles into styled components for video component later. Working on uploading video page.
+Setup Next.js template and updated README file with project information. Created some base components and added tailwind styled components for component styling. Refactoring current tailwind styles into styled components. Created video component and got videos rendering and pausing/playing. Need to tidy up styles into styled components for video component later. Working on uploading video page. Created user profile page. Added functionaliy to discover tags to filter correctly. Implemented filter search to filter by topic/comments based on search term. Wrapping up project.
+
+# TODO
+
+For now most new features/pages are styled directly in the file with tailwindcss for ease during time of dev. Need to refactor most of this out into tailwindcss-styled-components for code readability and maintainability.

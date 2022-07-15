@@ -15,9 +15,11 @@ export const Sidebar = () => {
   const userProfile = false;
 
   return (
-    <div>
-      <Styled.ToggleButton onClick={() => setShowSidebar((prev) => !prev)}>
-        {showSidebar ? <ImCancelCircle /> : <AiOutlineMenu />}
+    <>
+      <Styled.ToggleButton
+        onClick={() => setShowSidebar((prev) => !prev)}
+        $showSidebar={!showSidebar}>
+        <AiOutlineMenu />
       </Styled.ToggleButton>
       {showSidebar && (
         <Styled.SidebarContainer>
@@ -37,6 +39,6 @@ export const Sidebar = () => {
           <Footer />
         </Styled.SidebarContainer>
       )}
-    </div>
+    </>
   );
 };

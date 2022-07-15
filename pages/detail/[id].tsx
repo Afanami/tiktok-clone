@@ -53,7 +53,7 @@ const Detail = ({ postDetails }: IProps) => {
     }
   };
 
-  const addComment = async (e) => {
+  const addComment = async (e: React.FormEvent) => {
     // prevent reload
     e.preventDefault();
 
@@ -165,7 +165,7 @@ const Detail = ({ postDetails }: IProps) => {
             comment={comment}
             setComment={setComment}
             addComment={addComment}
-            comments={postMessage.comments}
+            comments={post.comments}
             isPostingComment={isPostingComment}
           />
         </div>
