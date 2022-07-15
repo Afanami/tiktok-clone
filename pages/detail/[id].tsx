@@ -137,7 +137,7 @@ const Detail = ({ postDetails }: IProps) => {
       </div>
 
       <div className="relative w-[1000px] md:w-[900px] lg:w-[700px]">
-        <div className="mt-10 lg:mt-20">
+        <div className="mt-6 lg:mt-20">
           <Link href={`/profile/${post.postedBy._id}`}>
             <div className="flex gap-3 p-2 font-semibold rounded cursor-pointer">
               <div className="w-16 h-16 ml-4 md:w-20 md:h-20">

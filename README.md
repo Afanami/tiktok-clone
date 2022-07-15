@@ -31,3 +31,5 @@ Setup Next.js template and updated README file with project information. Created
 - Some form of pagination on home page + comments section to increase performance
 
 - One video playback at a time only
+
+- Lot of TSX code clean up still needs to be done
