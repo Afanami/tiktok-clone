@@ -38,10 +38,13 @@ export const Comments = ({
                 (user: IUser) =>
                   user._id ===
                     (commentObj.postedBy._id || commentObj.postedBy._ref) && (
-                    <div className="items-center p-2" key={idx}>
+                    <div className="flex flex-col gap-2 p-2" key={idx}>
                       <Link href={`/profile/${user._id}`}>
-                        <div className="flex items-start gap-3 cursor-pointer">
-                          <UserDetails user={user} styles={{}} />
+                        <div className="flex items-center gap-3 cursor-pointer">
+                          <UserDetails
+                            user={user}
+                            styles={{ detailsContainer: "block" }}
+                          />
                         </div>
                       </Link>
                       <div>

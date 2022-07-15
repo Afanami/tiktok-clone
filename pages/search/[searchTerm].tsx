@@ -29,8 +29,8 @@ const Search = ({ videos }: IProps) => {
   );
 
   return (
-    <div className="w-full">
-      <div className="flex w-full gap-10 my-7 bg-white border-gray-200 border-b-[1px]">
+    <div className="w-full w-[90%]">
+      <div className="flex w-full gap-10 my-7 bg-white border-gray-200 border-b-[1px] ">
         <button
           className={`text-xl font-semibold mt-2  ${
             currentTabName === "accounts"
@@ -66,6 +66,7 @@ const Search = ({ videos }: IProps) => {
                     styles={{
                       width: 50,
                       height: 50,
+                      detailsContainer: "block",
                     }}
                   />
                 </div>
@@ -82,7 +83,7 @@ const Search = ({ videos }: IProps) => {
         <div className="flex flex-wrap gap-6 md:mt-16 md:justify-start">
           {videos?.length ? (
             videos.map((video: IVideo, idx: number) => (
-              <VideoCard post={video} key={idx} />
+              <VideoCard key={idx} post={video} isShowingOnHome={false} />
             ))
           ) : (
             <NoResults

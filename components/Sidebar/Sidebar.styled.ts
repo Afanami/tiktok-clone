@@ -7,7 +7,7 @@ interface IButton {
 export const ToggleButton = tw.button<IButton>`
   block 
   mt-3 
-  ml-2 
+  ml-3 
   text-xl 
   ${(props: IButton) => (props.$showSidebar ? "" : "xl:hidden")}
 `;

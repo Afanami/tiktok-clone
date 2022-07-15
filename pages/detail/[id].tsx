@@ -24,6 +24,8 @@ const Detail = ({ postDetails }: IProps) => {
   const [disabled, setDisabled] = useState(false);
   const [comment, setComment] = useState("");
   const [isPostingComment, setIsPostingComment] = useState(false);
+  const [showVolumeControl, setShowVolumeControl] = useState(false);
+  let [volume, setVolume] = useState(0.1);
   const videoRef = useRef<HTMLVideoElement>(null);
   const router = useRouter();
   const { userProfile }: { userProfile: IUser | any } = useAuthStore();
@@ -36,8 +38,9 @@ const Detail = ({ postDetails }: IProps) => {
   useEffect(() => {
     if (post && videoRef?.current) {
       videoRef.current.muted = isVideoMuted;
+      videoRef.current.volume = volume;
     }
-  }, [post, isVideoMuted]);
+  }, [post, isVideoMuted, volume]);
 
   const handleLike = async (like: boolean) => {
     setDisabled(true);
@@ -75,7 +78,9 @@ const Detail = ({ postDetails }: IProps) => {
 
   return (
     <div className="absolute top-0 left-0 flex flex-wrap w-full h-full bg-white lg:flex-nowrap">
-      <div className="relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-black">
+      <div
+        className="relative flex-2 w-[1000px] lg:w-9/12 flex justify-center items-center bg-black"
+        onMouseLeave={() => setShowVolumeControl(false)}>
         <div className="absolute z-50 flex gap-6 top-6 left-2 lg:left-6">
           <button
             className="cursor-pointer"
@@ -105,9 +110,27 @@ const Detail = ({ postDetails }: IProps) => {
           )}
         </div>
         <div className="absolute cursor-pointer bottom-5 lg:bottom-10 right-5 lg:right-10">
+          {showVolumeControl && (
+            <input
+              className="absolute hidden rotate-270 md:block"
+              type="range"
+              min={0}
+              max={1}
+              step={0.02}
+              value={volume}
+              onChange={(e) => {
+                setVolume(e.target.valueAsNumber);
+              }}
+              onMouseLeave={() => setShowVolumeControl(false)}
+            />
+          )}
           <button
             className="text-2xl text-white lg:text-4xl"
-            onClick={() => setIsVideoMuted((prev) => !prev)}>
+            onClick={() => {
+              setIsVideoMuted((prev) => !prev);
+              !isVideoMuted ? setVolume(0) : setVolume(0.1);
+            }}
+            onMouseEnter={() => setShowVolumeControl(true)}>
             {isVideoMuted ? <HiVolumeOff /> : <HiVolumeUp />}
           </button>
         </div>
@@ -115,23 +138,19 @@ const Detail = ({ postDetails }: IProps) => {
 
       <div className="relative w-[1000px] md:w-[900px] lg:w-[700px]">
         <div className="mt-10 lg:mt-20">
-          <div className="flex gap-3 p-2 font-semibold rounded cursor-pointer">
-            <div className="w-16 h-16 ml-4 md:w-20 md:h-20">
-              <Link href="">
-                <>
-                  <Image
-                    width={62}
-                    height={62}
-                    className="rounded-full"
-                    src={post.postedBy.image}
-                    alt="profile photo"
-                    layout="responsive"
-                  />
-                </>
-              </Link>
-            </div>
-            <div>
-              <Link href="/">
+          <Link href={`/profile/${post.postedBy._id}`}>
+            <div className="flex gap-3 p-2 font-semibold rounded cursor-pointer">
+              <div className="w-16 h-16 ml-4 md:w-20 md:h-20">
+                <Image
+                  width={62}
+                  height={62}
+                  className="rounded-full"
+                  src={post.postedBy.image}
+                  alt="profile photo"
+                  layout="responsive"
+                />
+              </div>
+              <div>
                 <div className="flex flex-col gap-2 mt-3">
                   <p className="flex items-center gap-2 font-bold md:text-md text-primary">
                     {post.postedBy.userName}{" "}
@@ -141,13 +160,15 @@ const Detail = ({ postDetails }: IProps) => {
                     {post.postedBy.userName}
                   </p>
                 </div>
-              </Link>
+              </div>
             </div>
+          </Link>
+
+          <div className="px-10">
+            <p className="text-gray-600 text-md ">{post.caption}</p>
           </div>
 
-          <p className="px-10 text-lg text-gray-600">{post.caption}</p>
-
-          <div className="px-10 mt-10">
+          <div className="py-2 px-9">
             {userProfile && (
               <LikeButton
                 likes={post.likes}

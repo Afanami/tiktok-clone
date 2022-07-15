@@ -19,13 +19,7 @@ export interface IVideo {
       image: string;
     };
   }[];
-  comments: {
-    comment: string;
-    _key: string;
-    postedBy: {
-      _ref: string;
-    };
-  }[];
+  comments: IComment[];
   userId: string;
 }
 

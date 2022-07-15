@@ -16,11 +16,11 @@ export const Sidebar = () => {
 
   return (
     <>
-      <Styled.ToggleButton
+      {/* <Styled.ToggleButton
         onClick={() => setShowSidebar((prev) => !prev)}
         $showSidebar={!showSidebar}>
         <AiOutlineMenu />
-      </Styled.ToggleButton>
+      </Styled.ToggleButton> */}
       {showSidebar && (
         <Styled.SidebarContainer>
           <Styled.LinkContainer>

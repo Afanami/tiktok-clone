@@ -26,4 +26,6 @@ Setup Next.js template and updated README file with project information. Created
 
 # TODO
 
-For now most new features/pages are styled directly in the file with tailwindcss for ease during time of dev. Need to refactor most of this out into tailwindcss-styled-components for code readability and maintainability.
+- For now most new features/pages are styled directly in the file with tailwindcss for ease during time of dev. Need to refactor most of this out into tailwindcss-styled-components for code readability and maintainability.
+
+- Some form of pagination on home page + comments section to increase performance
