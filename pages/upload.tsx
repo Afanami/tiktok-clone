@@ -28,7 +28,17 @@ const Upload = () => {
     setInvalidFileType(false);
 
     const selectedFile = e.target.files[0];
-    const fileTypes = ["video/mp4", "video/webm", "video/ogg"];
+    const fileTypes = [
+      "video/mp4",
+      "video/webm",
+      "video/ogg",
+      "video/m4v",
+      "video/mov",
+      "video/3gp",
+      "video/HEVC",
+      "video/H.264",
+      "video/H.265",
+    ];
 
     if (fileTypes.includes(selectedFile.type)) {
       client.assets
